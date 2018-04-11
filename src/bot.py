@@ -23,14 +23,14 @@ def ping(message):
 
 @cbox.method("!alias (.*)")
 def getAlias(message, name):
-	user = db.findUserByName(name)
+	user = cbox.db.findUserByName(name)
 	if not user:
 		if not name:
 			return "Sorry, I don't recognize that."
 		return "Sorry, I don't recognize the name %s." % (italic(name))
 
-	aliases = db.getAlias(user.name)
-	aliases = [(n, db.getPostCountByUser(n)) for n in aliases]
+	aliases = cbox.db.getAlias(user.name)
+	aliases = [(n, cbox.db.getPostCountByUser(n)) for n in aliases]
 	aliases.sort(key=lambda x:x[1], reverse=True)
 	aliases = [italic(a[0]) for a in aliases]
 

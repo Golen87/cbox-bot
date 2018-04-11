@@ -398,7 +398,7 @@ class CboxMessage:
 		self.content = BeautifulSoup(data[6], "html.parser").text # Message text
 		self.imgurl = data[7] # Image url
 		self.badFlags = int(data[8]) # Message type flags
-		self.userid = int(data[9]) # Author's id
+		self.userid = data[9] # Author's id
 		self.flaghtml = data[10]
 		self.localId = data[11]
 
