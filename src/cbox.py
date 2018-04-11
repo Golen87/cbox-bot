@@ -50,7 +50,7 @@ class Cbox:
 
 		if "Your session has expired." in response:
 			if expired:
-				raise ConnectionError("Unable to log into cbox!")
+				raise Exception("Unable to log into cbox! Your session has expired.")
 			self.login()
 			return self._requestPages(url, page, True)
 
@@ -73,6 +73,10 @@ class Cbox:
 		twill.fv("1", "pword", self.loginInfo["password"])
 
 		twill.submit("0")
+
+		response = twill.browser.get_html()
+		if "Incorrect username or password." in response:
+			raise Exception("Unable to log into cbox! Incorrect username or password.")
 
 	# Return list of users from cbox control panel
 	def fetchUsers(self):
