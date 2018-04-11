@@ -82,7 +82,6 @@ class Cbox:
 	def fetchUsers(self):
 		print "Getting users..."
 		pages = self._requestPages("https://www.cbox.ws/admin_l_users")
-		#pages = self._requestPages("https://www.golen.nu/portal/Cbox_Registered_Users.html")
 
 		users = []
 
@@ -109,7 +108,6 @@ class Cbox:
 	def fetchPosts(self):
 		print "Getting posts..."
 		pages = self._requestPages("https://www.cbox.ws/admin_l_posts")
-		#pages = self._requestPages("https://www.golen.nu/portal/Cbox_Posts.html")
 
 		posts = []
 
