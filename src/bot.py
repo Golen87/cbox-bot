@@ -46,5 +46,5 @@ def getAlias(message, name):
 
 
 #--- Run bot ---#
-
-cbox.run()
+if __name__ == '__main__':
+	cbox.run()
