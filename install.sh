@@ -6,13 +6,13 @@
 #------------------------------------------------------------------------------
 
 # This script installs cbox-bot, its requirements, system updates, a systemd
-# service unit, and the following scripts for system administration:
+# service unit, a user to run it all, and these admin scripts:
 #
 #   /usr/local/sbin/upgrade.sh
 #   /usr/local/sbin/status.sh
 
 # The installer targets Debian 9 Stretch running in a Proxmox LXC container.
-# Don't forget to configure it
+# Don't forget to set up config.py and import the data archive from cbox.
 
 
 #------------------------------------------------------------------------------
