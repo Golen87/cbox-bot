@@ -163,7 +163,7 @@ Description=cbox-bot
 [Service]
 User=${PROJECT_USER}
 WorkingDirectory=${PROJECT_DIR}
-ExecStart=${PROJECT_ENV}/bin/python src/bot.py
+ExecStart=${PROJECT_ENV}/bin/python -u src/bot.py
 
 [Install]
 WantedBy=multi-user.target
