@@ -8,8 +8,9 @@
 # This script installs cbox-bot, its requirements, system updates, a systemd
 # service unit, a user to run it all, and these admin scripts:
 #
-#   /usr/local/sbin/upgrade.sh
-#   /usr/local/sbin/status.sh
+#   /usr/local/sbin/upgrade.sh  - upgrades the system and git repo
+#   /usr/local/sbin/status.sh   - shows you systemctl status cbox-bot
+#   /usr/local/sbin/snoop.sh    - shows you journalctl -fu cbox-bot
 
 # The installer targets Debian 9 Stretch running in a Proxmox LXC container.
 # Don't forget to set up config.py and import the data archive from cbox.
@@ -78,7 +79,7 @@ PROJECT_USER=chu
 UPGRADE_SCRIPT=/usr/local/sbin/upgrade.sh
 UPGRADE_LOG_COLOR=3
 STATUS_SCRIPT=/usr/local/sbin/status.sh
-STATUS_LOG_COLOR=6
+SNOOP_SCRIPT=/usr/local/sbin/snoop.sh
 
 # Logging
 LOG_PREFIX="[install.sh]"
@@ -181,9 +182,16 @@ systemctl enable cbox-bot.service
 log "Installing $(basename ${STATUS_SCRIPT})"
 cat <<EOF > ${STATUS_SCRIPT}
 #!/bin/bash
-systemctl --no-pager status cbox-bot.service
+systemctl --no-pager -l status cbox-bot.service
 EOF
 chmod 700 ${STATUS_SCRIPT}
+
+log "Installing $(basename ${SNOOP_SCRIPT})"
+cat <<EOF > ${SNOOP_SCRIPT}
+#!/bin/bash
+journalctl -fu cbox-bot.service
+EOF
+chmod 700 ${SNOOP_SCRIPT}
 
 log "Installing $(basename ${UPGRADE_SCRIPT})"
 cat <<EOF > ${UPGRADE_SCRIPT}
