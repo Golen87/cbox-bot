@@ -220,8 +220,8 @@ apt autoremove --yes
 log "Activating virtualenv"
 source \${PROJECT_ENV}/bin/activate
 
-log "Pulling changes from \${PROJECT_REMOTE}/\${PROJECT_BRANCH}"
-git pull \${PROJECT_REMOTE}/\${PROJECT_BRANCH}
+log "Pulling changes from \${PROJECT_REMOTE} \${PROJECT_BRANCH}"
+git pull \${PROJECT_REMOTE} \${PROJECT_BRANCH}
 
 log "Syncing pip requirements"
 pip install -r \${PROJECT_DIR}/requirements.txt
