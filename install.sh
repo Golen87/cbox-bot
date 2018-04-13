@@ -66,7 +66,7 @@ DEB_BASE_TARGET=stretch
 DEB_COMPONENTS="main contrib non-free"
 DEB_MIRROR=http://ftp.us.debian.org/debian
 DEB_PKG_EXTRA="cron-apt curl htop sudo tree vim wget"
-DEB_PKG_REQUIRED="git python2-dev virtualenv"
+DEB_PKG_REQUIRED="git python2.7-dev virtualenv"
 
 # Project
 PROJECT_BRANCH=master
